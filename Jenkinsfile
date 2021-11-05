@@ -27,4 +27,12 @@ node {
 		}
 	}
 
+	stage('Quality Analysis') {
+		withSonarQubeEnv('sonar') {
+			withMaven(maven: 'maven') {
+				sh "mvn sonar:sonar"
+			}
+		}
+	}
+
 }
